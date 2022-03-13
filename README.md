@@ -1,8 +1,6 @@
 # ROS 2 Real-Time Working Group Documentation
 
-[![Documentation Status](https://readthedocs.org/projects/real-time-working-group/badge/?version=rolling)](https://real-time-working-group.readthedocs.io/en/rolling/?badge=rolling)
-
-This repository contains the sources for the ROS 2 real-time working group documentation that is hosted at https://real-time-working-group.readthedocs.io.
+This repository contains the sources for the ROS 2 real-time working group documentation that is hosted at https://ros-realtime.github.io/.
 The sources from this repository are automatically fetched and built on every commit.
 
 ## Contributing to the documentation
@@ -29,13 +27,13 @@ To build the site for just this branch, type the following commands at the top-l
 
 ```bash
 cd ~
-git clone https://github.com/ros-realtime/rtwg_documentation
+git clone https://github.com/ros-realtime/ros-realtime.github.io
 cd rtwg_documentation
-docker build -t rtwg_documentation .
-docker run -v "$(pwd)":/docs -u $(id -u):$(id -g) -it rtwg_documentation
+docker build -t ros-realtime.github.io .
+docker run -v "$(pwd)":/docs -u $(id -u):$(id -g) -it ros-realtime.github.io
 ```
 
-Build results are located at `~/rtwg_documentation/build/index.html`.
+Build results are located at `~/ros-realtime.github.io/build/index.html`.
 This is the recommended way to test out local changes.
 
 ### Runnining the site
@@ -51,4 +49,4 @@ It will be accessible remotely at http://<remote_ip_address>:8000
 
 ## Contributing to ROS 2 real-time working group
 
-To contribute to the project please refer to the [How to Contribute](https://real-time-working-group.readthedocs.io/en/latest/Contributing/how_to_contribute.html).
+To contribute to the project please refer to the [How to Contribute](https://ros-realtime.github.io/Contributing/how_to_contribute.html).
