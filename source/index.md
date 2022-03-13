@@ -9,7 +9,7 @@ The Real-Time Working Group's mission is to advocate for and work on memory mana
    :hidden:
 
    Guides/guides.md
-   Real-Time-Buildfarm/real_time_buildfarm
+   Benchmarks/benchmarks
    Subprojects/subprojects
    Related-Projects/related_projects
    Resources/resources
