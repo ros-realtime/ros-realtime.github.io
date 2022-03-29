@@ -28,7 +28,7 @@ To build the site for just this branch, type the following commands at the top-l
 ```bash
 cd ~
 git clone https://github.com/ros-realtime/ros-realtime.github.io
-cd rtwg_documentation
+cd ros-realtime.github.io
 docker build -t ros-realtime.github.io .
 docker run -v "$(pwd)":/docs -u $(id -u):$(id -g) -it ros-realtime.github.io
 ```
