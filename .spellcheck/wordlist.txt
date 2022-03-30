@@ -69,3 +69,4 @@ rpi
 SCHED
 prefault
 sched
+flashable
