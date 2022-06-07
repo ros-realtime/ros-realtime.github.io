@@ -70,3 +70,8 @@ SCHED
 prefault
 sched
 flashable
+Beltrame
+Bédard
+Christophe
+Dagenais
+Lajoie
