@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Build a Linux Real-Time kernel using docker &mdash; ROS 2 Real-Time Working Group  documentation</title>
@@ -14,6 +14,7 @@
         <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
         <script src="../../../_static/jquery.js"></script>
         <script src="../../../_static/underscore.js"></script>
+        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../../../_static/doctools.js"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
@@ -93,13 +94,13 @@
            <div itemprop="articleBody">
              
   <section id="build-a-linux-real-time-kernel-using-docker">
-<h1>Build a Linux Real-Time kernel using docker<a class="headerlink" href="#build-a-linux-real-time-kernel-using-docker" title="Permalink to this headline"></a></h1>
+<h1>Build a Linux Real-Time kernel using docker<a class="headerlink" href="#build-a-linux-real-time-kernel-using-docker" title="Permalink to this heading"></a></h1>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
 <p>This document explains how to build a real-time kernel using a docker container provided by the ROS Real-Time Working Group. The docker container comes with cross-compilation tools installed, and a ready-to-build RT kernel. This should be the preferred option for those users who simply want to use to cross-compile a new kernel.</p>
 </section>
 <section id="supported-configuration">
-<h2>Supported configuration<a class="headerlink" href="#supported-configuration" title="Permalink to this headline"></a></h2>
+<h2>Supported configuration<a class="headerlink" href="#supported-configuration" title="Permalink to this heading"></a></h2>
 <p>For the moment, the tool supports the following options:</p>
 <ul class="simple">
 <li><p>5.4.0 kernel version and 5.4.86-rt48 patch</p></li>
@@ -109,7 +110,7 @@
 </ul>
 </section>
 <section id="build-and-run-docker-container">
-<h2>Build and run docker container<a class="headerlink" href="#build-and-run-docker-container" title="Permalink to this headline"></a></h2>
+<h2>Build and run docker container<a class="headerlink" href="#build-and-run-docker-container" title="Permalink to this heading"></a></h2>
 <p>For the local build:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/ros-realtime/linux-real-time-kernel-builder
 $ <span class="nb">cd</span> linux-real-time-kernel-builder
@@ -119,7 +120,7 @@ $ docker run -t -i rtwg-image bash
 </div>
 </section>
 <section id="kernel-configuration">
-<h2>Kernel configuration<a class="headerlink" href="#kernel-configuration" title="Permalink to this headline"></a></h2>
+<h2>Kernel configuration<a class="headerlink" href="#kernel-configuration" title="Permalink to this heading"></a></h2>
 <p>By default the kernel is configured with the following options:</p>
 <ul class="simple">
 <li><p>RT preempt real-time kernel</p></li>
@@ -183,7 +184,7 @@ $ make <span class="nv">ARCH</span><span class="o">=</span>arm64 <span class="nv
 </div>
 </section>
 <section id="kernel-build">
-<h2>Kernel build<a class="headerlink" href="#kernel-build" title="Permalink to this headline"></a></h2>
+<h2>Kernel build<a class="headerlink" href="#kernel-build" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> linux-raspi-5.4.0/
 $ make <span class="nv">ARCH</span><span class="o">=</span>arm64 <span class="nv">CROSS_COMPILE</span><span class="o">=</span>aarch64-linux-gnu- -j <span class="sb">`</span>nproc<span class="sb">`</span> deb-pkg
 </pre></div>
@@ -198,9 +199,9 @@ $ make <span class="nv">ARCH</span><span class="o">=</span>arm64 <span class="nv
 </div>
 </section>
 <section id="deploy">
-<h2>Deploy<a class="headerlink" href="#deploy" title="Permalink to this headline"></a></h2>
+<h2>Deploy<a class="headerlink" href="#deploy" title="Permalink to this heading"></a></h2>
 <section id="download-and-install-ubuntu-20-04-image">
-<h3>Download and install Ubuntu 20.04 image<a class="headerlink" href="#download-and-install-ubuntu-20-04-image" title="Permalink to this headline"></a></h3>
+<h3>Download and install Ubuntu 20.04 image<a class="headerlink" href="#download-and-install-ubuntu-20-04-image" title="Permalink to this heading"></a></h3>
 <p>Follow these links to download and install Ubuntu 20.04. In the case of the Raspberry PI:</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://ubuntu.com/download/raspberry-pi">https://ubuntu.com/download/raspberry-pi</a></p></li>
@@ -213,7 +214,7 @@ ubuntu/ubuntu
 </div>
 </section>
 <section id="copy-a-new-kernel-to-your-system-and-install-it">
-<h3>Copy a new kernel to your system and install it<a class="headerlink" href="#copy-a-new-kernel-to-your-system-and-install-it" title="Permalink to this headline"></a></h3>
+<h3>Copy a new kernel to your system and install it<a class="headerlink" href="#copy-a-new-kernel-to-your-system-and-install-it" title="Permalink to this heading"></a></h3>
 <p>Todo: Add instructions explaining how to move the files to the Raspberry PI</p>
 <p>Assumed you have already copied all *.deb packages to your <code class="docutils literal notranslate"><span class="pre">$HOME/ubuntu</span></code> directory</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$HOME</span>/ubuntu
@@ -248,7 +249,7 @@ $ sudo reboot
 </div>
 </section>
 <section id="configure-boot-options">
-<h3>Configure boot options<a class="headerlink" href="#configure-boot-options" title="Permalink to this headline"></a></h3>
+<h3>Configure boot options<a class="headerlink" href="#configure-boot-options" title="Permalink to this heading"></a></h3>
 <p>Inside the Raspberry PI, add the following at the end of the line in <code class="docutils literal notranslate"><span class="pre">/boot/firmware/cmdline.txt</span></code>:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo vim /boot/firmware/cmdline.txt
 <span class="c1">#  dwc_otg.fiq_fsm_enable=0 dwc_otg.fiq_enable=0 dwc_otg.nak_holdoff=0 dwg_otg.speed=1 rcu_nocbs=0 nohz_full=1-3 isolcpus=1-3 audit=0 watchdog=0 skew_tick=1</span>
@@ -271,7 +272,7 @@ $ sudo reboot
 </ul>
 </section>
 <section id="verify-that-eveything-is-correctly-configured">
-<h3>Verify that eveything is correctly configured<a class="headerlink" href="#verify-that-eveything-is-correctly-configured" title="Permalink to this headline"></a></h3>
+<h3>Verify that eveything is correctly configured<a class="headerlink" href="#verify-that-eveything-is-correctly-configured" title="Permalink to this heading"></a></h3>
 <p>After reboot you should see a new RT kernel installed</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ubuntu@ubuntu:/boot$ uname -a
 Linux ubuntu <span class="m">5</span>.4.114-rt57 <span class="c1">#1 SMP PREEMPT_RT Thu Jun 17 09:21:41 UTC 2021 aarch64 aarch64 aarch64 GNU/Linux</span>
@@ -342,7 +343,7 @@ ubuntu@ubuntu:~$ cpufreq-info -s -m
 </div>
 </section>
 <section id="benchmark">
-<h3>Benchmark<a class="headerlink" href="#benchmark" title="Permalink to this headline"></a></h3>
+<h3>Benchmark<a class="headerlink" href="#benchmark" title="Permalink to this heading"></a></h3>
 <p>Finally, we can benchmark the real-time performance of the configured kernel with the platform we are using. A common benchmark is to measure the interrupt latency using a tool named <a class="reference external" href="https://wiki.linuxfoundation.org/realtime/documentation/howto/tools/cyclictest/start">cyclictest</a>.</p>
 <p>For example you run a latency test imposing CPU and I/O stress in the system and verifying that the latency test results in good performance.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ taskset -c <span class="m">0</span> stress -c <span class="m">1</span> <span class="p">&amp;</span> 

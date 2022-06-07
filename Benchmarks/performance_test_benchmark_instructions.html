@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Instructions for performance_test real-time benchmark &mdash; ROS 2 Real-Time Working Group  documentation</title>
@@ -14,6 +14,7 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -80,9 +81,9 @@
            <div itemprop="articleBody">
              
   <section id="instructions-for-performance-test-real-time-benchmark">
-<h1>Instructions for performance_test real-time benchmark<a class="headerlink" href="#instructions-for-performance-test-real-time-benchmark" title="Permalink to this headline"></a></h1>
+<h1>Instructions for performance_test real-time benchmark<a class="headerlink" href="#instructions-for-performance-test-real-time-benchmark" title="Permalink to this heading"></a></h1>
 <section id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline"></a></h2>
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading"></a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://gitlab.com/ApexAI/performance_test">performance_test</a></p></li>
 <li><p><a class="reference external" href="https://gitlab.com/ApexAI/performance_test/-/tree/master/performance_report">performance_report</a></p></li>
@@ -90,7 +91,7 @@
 </ul>
 </section>
 <section id="setup">
-<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline"></a></h2>
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this heading"></a></h2>
 <p>Build <code class="docutils literal notranslate"><span class="pre">performance_test</span></code> following the official instructions:</p>
 <ul class="simple">
 <li><p>https://gitlab.com/ApexAI/performance_test#building-the-performance_test-tool</p></li>
@@ -101,7 +102,7 @@
 </div>
 </section>
 <section id="run-the-benchmarks">
-<h2>Run the benchmarks<a class="headerlink" href="#run-the-benchmarks" title="Permalink to this headline"></a></h2>
+<h2>Run the benchmarks<a class="headerlink" href="#run-the-benchmarks" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># It takes around 4 minutes</span>
 ros2 run performance_report runner <span class="se">\</span>
   --log-dir perf_logs <span class="se">\</span>
@@ -117,7 +118,7 @@ ros2 run performance_report runner <span class="se">\</span>
 </div>
 </section>
 <section id="generate-the-plots">
-<h2>Generate the plots<a class="headerlink" href="#generate-the-plots" title="Permalink to this headline"></a></h2>
+<h2>Generate the plots<a class="headerlink" href="#generate-the-plots" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run performance_report plotter <span class="se">\</span>
   --log-dir perf_logs <span class="se">\</span>
   --configs ~/performance_test_rt_cfg/plotter/plot_experiment_single.yaml
@@ -134,7 +135,7 @@ ros2 run performance_report plotter <span class="se">\</span>
 </div>
 </section>
 <section id="generate-the-reports">
-<h2>Generate the reports<a class="headerlink" href="#generate-the-reports" title="Permalink to this headline"></a></h2>
+<h2>Generate the reports<a class="headerlink" href="#generate-the-reports" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run performance_report reporter <span class="se">\</span>
   --log-dir perf_logs <span class="se">\</span>
   --configs ~/performance_test_rt_cfg/reporter/report_experiment_single.yaml

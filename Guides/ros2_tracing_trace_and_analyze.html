@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html class="writer-html5" lang="en" >
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>How to use ros2_tracing to trace and analyze an application &mdash; ROS 2 Real-Time Working Group  documentation</title>
@@ -14,6 +14,7 @@
         <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
         <script src="../_static/jquery.js"></script>
         <script src="../_static/underscore.js"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
         <script src="../_static/doctools.js"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
@@ -81,11 +82,11 @@
            <div itemprop="articleBody">
              
   <section id="how-to-use-ros2-tracing-to-trace-and-analyze-an-application">
-<h1>How to use ros2_tracing to trace and analyze an application<a class="headerlink" href="#how-to-use-ros2-tracing-to-trace-and-analyze-an-application" title="Permalink to this headline"></a></h1>
+<h1>How to use ros2_tracing to trace and analyze an application<a class="headerlink" href="#how-to-use-ros2-tracing-to-trace-and-analyze-an-application" title="Permalink to this heading"></a></h1>
 <p>This guide shows how to use <a class="reference external" href="https://gitlab.com/ros-tracing/ros2_tracing"><code class="docutils literal notranslate"><span class="pre">ros2_tracing</span></code></a> to trace and analyze a ROS 2 application.
 For this guide, the application will be <a class="reference external" href="https://gitlab.com/ApexAI/performance_test"><code class="docutils literal notranslate"><span class="pre">performance_test</span></code></a>.</p>
 <section id="overview">
-<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline"></a></h2>
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this heading"></a></h2>
 <p>This guide covers:</p>
 <ol class="simple">
 <li><p>installing tracing-related tools and building ROS 2 with the core instrumentation enabled</p></li>
@@ -94,7 +95,7 @@ For this guide, the application will be <a class="reference external" href="http
 </ol>
 </section>
 <section id="prerequisites">
-<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this headline"></a></h2>
+<h2>Prerequisites<a class="headerlink" href="#prerequisites" title="Permalink to this heading"></a></h2>
 <p>This guide is aimed at real-time systems.
 See the <a class="reference internal" href="Real-Time-Operating-System-Setup/Real-Time-Linux/rt_linux_index.html"><span class="doc">real-time system setup guide</span></a>.
 However, the guide will work if you are using a non-real-time system.</p>
@@ -104,7 +105,7 @@ However, the guide will work if you are using a non-real-time system.</p>
 </div>
 </section>
 <section id="installing-and-building">
-<h2>Installing and building<a class="headerlink" href="#installing-and-building" title="Permalink to this headline"></a></h2>
+<h2>Installing and building<a class="headerlink" href="#installing-and-building" title="Permalink to this heading"></a></h2>
 <p>First, make sure you have <a class="reference external" href="https://docs.ros.org/en/rolling/Installation/Ubuntu-Development-Setup.html">installed all dependencies for ROS 2 Rolling</a>.</p>
 <p>Install <a class="reference external" href="https://lttng.org/docs/">LTTng</a> as well as <code class="docutils literal notranslate"><span class="pre">babeltrace</span></code>.
 We will only install the LTTng userspace tracer.</p>
@@ -137,7 +138,7 @@ We also need to build <code class="docutils literal notranslate"><span class="pr
 <p>Next, we will run a <code class="docutils literal notranslate"><span class="pre">performance_test</span></code> experiment and trace it.</p>
 </section>
 <section id="tracing">
-<h2>Tracing<a class="headerlink" href="#tracing" title="Permalink to this headline"></a></h2>
+<h2>Tracing<a class="headerlink" href="#tracing" title="Permalink to this heading"></a></h2>
 <p>Start an LTTng session daemon.
 For userspace tracing, the daemon does not need to be started as <code class="docutils literal notranslate"><span class="pre">root</span></code>.
 Note that a non-root daemon will be spawned automatically by <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">trace</span></code> if it is not already running.</p>
@@ -192,7 +193,7 @@ Each event has a timestamp, an event type, some information on the process that 
 <p>Next, we will analyze the trace.</p>
 </section>
 <section id="analysis">
-<h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this headline"></a></h2>
+<h2>Analysis<a class="headerlink" href="#analysis" title="Permalink to this heading"></a></h2>
 <p><a class="reference external" href="https://gitlab.com/ros-tracing/tracetools_analysis"><code class="docutils literal notranslate"><span class="pre">tracetools_analysis</span></code></a> provides a Python API to easily analyze traces.
 We can use it in a <a class="reference external" href="https://jupyter.org/">Jupyter notebook</a> with <a class="reference external" href="https://docs.bokeh.org/en/latest/index.html">bokeh</a> to plot the data.
 The <code class="docutils literal notranslate"><span class="pre">tracetools_analysis</span></code> repository contains a <a class="reference external" href="https://gitlab.com/ros-tracing/tracetools_analysis/-/tree/master/tracetools_analysis/analysis">few sample notebooks</a>, including <a class="reference external" href="https://gitlab.com/ros-tracing/tracetools_analysis/-/blob/master/tracetools_analysis/analysis/callback_duration.ipynb">one notebook to analyze subscription callback durations</a>.</p>
@@ -215,7 +216,7 @@ Running the cell that does the trace processing might take a few minutes on the 
 <p>We can see that most of the callbacks take less than 0.01 ms, but there are some outliers taking over 0.02 or 0.03 ms.</p>
 </section>
 <section id="conclusion">
-<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this headline"></a></h2>
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Permalink to this heading"></a></h2>
 <p>This guide showed how to install tracing-related tools and build ROS 2 with tracing instrumentation.
 Then it showed how to trace a <a class="reference external" href="https://gitlab.com/ApexAI/performance_test"><code class="docutils literal notranslate"><span class="pre">performance_test</span></code></a> experiment using <a class="reference external" href="https://gitlab.com/ros-tracing/ros2_tracing"><code class="docutils literal notranslate"><span class="pre">ros2_tracing</span></code></a> and plot the callback durations using <a class="reference external" href="https://gitlab.com/ros-tracing/tracetools_analysis"><code class="docutils literal notranslate"><span class="pre">tracetools_analysis</span></code></a>.</p>
 <p>For more trace analyses, take a look at the <a class="reference external" href="https://gitlab.com/ros-tracing/tracetools_analysis/-/tree/master/tracetools_analysis/analysis">other sample notebooks</a> and the <a class="reference external" href="https://ros-tracing.gitlab.io/tracetools_analysis-api/master/tracetools_analysis/"><code class="docutils literal notranslate"><span class="pre">tracetools_analysis</span></code> API documentation</a>.
