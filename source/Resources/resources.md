@@ -58,4 +58,5 @@ This document contains a compilation of ROS and real-time related documents, art
 - [Jan Staschulat, Ingo Lütkebohle, Ralph Lange. The rclc Executor: Domain-specific deterministic scheduling mechanisms for ROS applications on microcontrollers, EMSOFT 2020.](https://ieeexplore.ieee.org/document/9244014)
 - [Jan Staschulat, Ralph Lange, Dakshina Narahari Dasari. Budget-based real-time Executor for Micro-ROS. CoRR arXiv:2105.05590, May 2021](https://arxiv.org/abs/2105.05590)
 - [L. Puck et al. Distributed and Synchronized Setup towards Real-Time Robotic Control using ROS2 on Linux](https://ieeexplore.ieee.org/document/9217010)
-- [Christophe Bédard, Pierre-Yves Lajoie, Giovanni Beltrame, Michel Dagenais. Message Flow Analysis with Complex Causal Links for Distributed ROS 2 Systems](https://arxiv.org/abs/2204.10208)
+- [Christophe Bédard, Ingo Lütkebohle, Michel Dagenais. ros2_tracing: Multipurpose Low-Overhead Framework for Real-Time Tracing of ROS 2.](https://arxiv.org/pdf/2201.00393.pdf)
+- [Christophe Bédard, Pierre-Yves Lajoie, Giovanni Beltrame, Michel Dagenais. Message Flow Analysis with Complex Causal Links for Distributed ROS 2 Systems](https://arxiv.org/pdf/2204.10208.pdf)
