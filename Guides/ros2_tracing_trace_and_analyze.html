@@ -166,20 +166,20 @@ $ <span class="nb">source</span> install/setup.bash
 We simply create an experiment with a node publishing ~1 MB messages to another node as fast as possible for 60 seconds using the second highest real-time priority so that we don’t interfere with critical kernel threads.
 We need to run <code class="docutils literal notranslate"><span class="pre">performance_test</span></code> as root to be able to use real-time priorities.</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="c1"># terminal 2</span>
-$ sudo ./install/performance_test/lib/performance_test/perf_test -c rclcpp-single-threaded-executor -p <span class="m">1</span> -s <span class="m">1</span> -r <span class="m">0</span> -m Array1m --reliable --max-runtime <span class="m">60</span> --use-rt-prio <span class="m">98</span>
+$ sudo ./install/performance_test/lib/performance_test/perf_test -c rclcpp-single-threaded-executor -p <span class="m">1</span> -s <span class="m">1</span> -r <span class="m">0</span> -m Array1m --reliability RELIABLE --max-runtime <span class="m">60</span> --use-rt-prio <span class="m">98</span>
 </pre></div>
 </div>
 <p>If that last command doesn’t work for you (with an error like: “error while loading shared libraries”), run the slightly-different command below.
 This is because, for security reasons, we need to manually pass <code class="docutils literal notranslate"><span class="pre">*PATH</span></code> environment variables for some shared libraries to be found (see <a class="reference external" href="https://unix.stackexchange.com/a/251374">this explanation</a>).</p>
 <div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="c1"># terminal 2</span>
-$ sudo env <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PATH</span><span class="s2">&quot;</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$LD_LIBRARY_PATH</span><span class="s2">&quot;</span> ./install/performance_test/lib/performance_test/perf_test -c rclcpp-single-threaded-executor -p <span class="m">1</span> -s <span class="m">1</span> -r <span class="m">0</span> -m Array1m --reliable --max-runtime <span class="m">60</span> --use-rt-prio <span class="m">98</span>
+$ sudo env <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PATH</span><span class="s2">&quot;</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$LD_LIBRARY_PATH</span><span class="s2">&quot;</span> ./install/performance_test/lib/performance_test/perf_test -c rclcpp-single-threaded-executor -p <span class="m">1</span> -s <span class="m">1</span> -r <span class="m">0</span> -m Array1m --reliability RELIABLE --max-runtime <span class="m">60</span> --use-rt-prio <span class="m">98</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you’re not using a real-time kernel, simply run:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="c1"># terminal 2</span>
-$ ./install/performance_test/lib/performance_test/perf_test -c rclcpp-single-threaded-executor -p <span class="m">1</span> -s <span class="m">1</span> -r <span class="m">0</span> -m Array1m --reliable --max-runtime <span class="m">60</span>
+$ ./install/performance_test/lib/performance_test/perf_test -c rclcpp-single-threaded-executor -p <span class="m">1</span> -s <span class="m">1</span> -r <span class="m">0</span> -m Array1m --reliability RELIABLE --max-runtime <span class="m">60</span>
 </pre></div>
 </div>
 </div>
