@@ -102,7 +102,7 @@ We need to run `performance_test` as root to be able to use real-time priorities
 
 ```sh
 $ # terminal 2
-$ sudo ./install/performance_test/lib/performance_test/perf_test -c rclcpp-single-threaded-executor -p 1 -s 1 -r 0 -m Array1m --reliable --max-runtime 60 --use-rt-prio 98
+$ sudo ./install/performance_test/lib/performance_test/perf_test -c rclcpp-single-threaded-executor -p 1 -s 1 -r 0 -m Array1m --reliability RELIABLE --max-runtime 60 --use-rt-prio 98
 ```
 
 If that last command doesn't work for you (with an error like: "error while loading shared libraries"), run the slightly-different command below.
@@ -110,7 +110,7 @@ This is because, for security reasons, we need to manually pass `*PATH` environm
 
 ```sh
 $ # terminal 2
-$ sudo env PATH="$PATH" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" ./install/performance_test/lib/performance_test/perf_test -c rclcpp-single-threaded-executor -p 1 -s 1 -r 0 -m Array1m --reliable --max-runtime 60 --use-rt-prio 98
+$ sudo env PATH="$PATH" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" ./install/performance_test/lib/performance_test/perf_test -c rclcpp-single-threaded-executor -p 1 -s 1 -r 0 -m Array1m --reliability RELIABLE --max-runtime 60 --use-rt-prio 98
 ```
 
 ```eval_rst
@@ -120,7 +120,7 @@ $ sudo env PATH="$PATH" LD_LIBRARY_PATH="$LD_LIBRARY_PATH" ./install/performance
    .. code-block:: bash
 
       $ # terminal 2
-      $ ./install/performance_test/lib/performance_test/perf_test -c rclcpp-single-threaded-executor -p 1 -s 1 -r 0 -m Array1m --reliable --max-runtime 60
+      $ ./install/performance_test/lib/performance_test/perf_test -c rclcpp-single-threaded-executor -p 1 -s 1 -r 0 -m Array1m --reliability RELIABLE --max-runtime 60
 ```
 
 Once the experiment is done, in the first terminal, press enter again to stop tracing.
