@@ -124,6 +124,11 @@ $ git clone https://gitlab.com/ros-tracing/tracetools_analysis.git
 $ <span class="nb">cd</span> ..
 </pre></div>
 </div>
+<p>Install dependencies with rosdep.</p>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ rosdep update
+$ rosdep install --from-paths src --ignore-src -y --skip-keys <span class="s2">&quot;fastcdr rti-connext-dds-6.0.1 urdfdom_headers&quot;</span>
+</pre></div>
+</div>
 <p>Then build up to <code class="docutils literal notranslate"><span class="pre">performance_test</span></code> and configure it for ROS 2.
 See its <a class="reference external" href="https://gitlab.com/ApexAI/performance_test#ros-2-middleware-plugins">documentation</a>.
 We also need to build <code class="docutils literal notranslate"><span class="pre">ros2trace</span></code> to set up tracing using the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">trace</span></code> command and <code class="docutils literal notranslate"><span class="pre">tracetools_analysis</span></code> to analyze the data.</p>
