@@ -34,7 +34,7 @@
 - ```ros2_tracing```
   - Description: Tracing tools for ROS 2
   - Repositories
-    - [https://gitlab.com/ros-tracing/ros2_tracing](https://gitlab.com/ros-tracing/ros2_tracing)
+    - [https://github.com/ros2/ros2_tracing](https://github.com/ros2/ros2_tracing)
     - [https://gitlab.com/ros-tracing/tracetools_analysis](https://gitlab.com/ros-tracing/tracetools_analysis)
 - ```osrf_testing_tools_cpp```
   - Description: This repository contains testing tools for C++, and is used in OSRF projects. The memory_tools API lets you intercept calls to dynamic memory calls like ```malloc``` and ```free```, and provides some convenience functions for differentiating between expected and unexpected calls to dynamic memory functions.

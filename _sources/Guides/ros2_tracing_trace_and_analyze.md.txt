@@ -1,6 +1,6 @@
 # How to use ros2_tracing to trace and analyze an application
 
-This guide shows how to use [`ros2_tracing`](https://gitlab.com/ros-tracing/ros2_tracing) to trace and analyze a ROS 2 application.
+This guide shows how to use [`ros2_tracing`](https://github.com/ros2/ros2_tracing) to trace and analyze a ROS 2 application.
 For this guide, the application will be [`performance_test`](https://gitlab.com/ApexAI/performance_test).
 
 ## Overview
@@ -181,7 +181,7 @@ We can see that most of the callbacks take less than 0.01 ms, but there are some
 ## Conclusion
 
 This guide showed how to install tracing-related tools and build ROS 2 with tracing instrumentation.
-Then it showed how to trace a [`performance_test`](https://gitlab.com/ApexAI/performance_test) experiment using [`ros2_tracing`](https://gitlab.com/ros-tracing/ros2_tracing) and plot the callback durations using [`tracetools_analysis`](https://gitlab.com/ros-tracing/tracetools_analysis).
+Then it showed how to trace a [`performance_test`](https://gitlab.com/ApexAI/performance_test) experiment using [`ros2_tracing`](https://github.com/ros2/ros2_tracing) and plot the callback durations using [`tracetools_analysis`](https://gitlab.com/ros-tracing/tracetools_analysis).
 
 For more trace analyses, take a look at the [other sample notebooks](https://gitlab.com/ros-tracing/tracetools_analysis/-/tree/master/tracetools_analysis/analysis) and the [`tracetools_analysis` API documentation](https://ros-tracing.gitlab.io/tracetools_analysis-api/master/tracetools_analysis/).
-The [`ros2_tracing` design document](https://gitlab.com/ros-tracing/ros2_tracing/-/blob/master/doc/design_ros_2.md) also contains a lot of information.
+The [`ros2_tracing` design document](https://github.com/ros2/ros2_tracing/blob/master/doc/design_ros_2.md) also contains a lot of information.
