@@ -14,3 +14,4 @@ This page describes planned work for the ROS 2 Real-Time Working Group.
 | Create middleware RT tutorials                             | Documentation | [#33](https://github.com/ros-realtime/community/issues/33)   |
 | Create concepts section                                    | Documentation | [#17](https://github.com/ros-realtime/ros-realtime.github.io/issues/10) |
 | Real-time executor concept                                 | Documentation | [#45](https://github.com/ros-realtime/community/issues/45)   |
+| Consolidate documentation                                  | Documentation | [#41](https://github.com/ros-realtime/community/issues/41)   |
