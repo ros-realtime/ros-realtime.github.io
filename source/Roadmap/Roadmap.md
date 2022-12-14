@@ -13,3 +13,4 @@ This page describes planned work for the ROS 2 Real-Time Working Group.
 | Refactor realtime_support package                          | Tools         | [#14](https://github.com/ros-realtime/community/issues/14)   |
 | Create middleware RT tutorials                             | Documentation | [#33](https://github.com/ros-realtime/community/issues/33)   |
 | Create concepts section                                    | Documentation | [#17](https://github.com/ros-realtime/ros-realtime.github.io/issues/10) |
+| Real-time executor concept                                 | Documentation | [#45](https://github.com/ros-realtime/community/issues/45)   |
