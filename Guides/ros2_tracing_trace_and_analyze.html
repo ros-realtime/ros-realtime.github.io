@@ -1,22 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>How to use ros2_tracing to trace and analyze an application &mdash; ROS 2 Real-Time Working Group  documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -29,12 +28,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> ROS 2 Real-Time Working Group
-            <img src="../_static/rtwg_image.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            ROS 2 Real-Time Working Group
+              <img src="../_static/rtwg_image.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -70,7 +73,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="guides.html">Guides</a></li>
       <li class="breadcrumb-item active">How to use ros2_tracing to trace and analyze an application</li>
       <li class="wy-breadcrumbs-aside">
@@ -110,34 +113,34 @@ However, the guide will work if you are using a non-real-time system.</p>
 <p>First, make sure you have <a class="reference external" href="https://docs.ros.org/en/rolling/Installation/Ubuntu-Development-Setup.html">installed all dependencies for ROS 2 Rolling</a>.</p>
 <p>Install <a class="reference external" href="https://lttng.org/docs/">LTTng</a> as well as <code class="docutils literal notranslate"><span class="pre">babeltrace</span></code>.
 We will only install the LTTng userspace tracer.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get update
-$ sudo apt-get install -y lttng-tools liblttng-ust-dev python3-lttng python3-babeltrace babeltrace
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>update
+$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>lttng-tools<span class="w"> </span>liblttng-ust-dev<span class="w"> </span>python3-lttng<span class="w"> </span>python3-babeltrace<span class="w"> </span>babeltrace
 </pre></div>
 </div>
 <p>Then create a workspace, import the ROS 2 Rolling code, and clone <code class="docutils literal notranslate"><span class="pre">performance_test</span></code> and <code class="docutils literal notranslate"><span class="pre">tracetools_analysis</span></code>.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> ~/
-$ mkdir -p tracing_ws/src
-$ <span class="nb">cd</span> tracing_ws/
-$ vcs import src/ --input https://raw.githubusercontent.com/ros2/ros2/master/ros2.repos
-$ <span class="nb">cd</span> src/
-$ git clone https://gitlab.com/ApexAI/performance_test.git
-$ git clone https://gitlab.com/ros-tracing/tracetools_analysis.git
-$ <span class="nb">cd</span> ..
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/
+$<span class="w"> </span>mkdir<span class="w"> </span>-p<span class="w"> </span>tracing_ws/src
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>tracing_ws/
+$<span class="w"> </span>vcs<span class="w"> </span>import<span class="w"> </span>src/<span class="w"> </span>--input<span class="w"> </span>https://raw.githubusercontent.com/ros2/ros2/master/ros2.repos
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>src/
+$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://gitlab.com/ApexAI/performance_test.git
+$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://gitlab.com/ros-tracing/tracetools_analysis.git
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>..
 </pre></div>
 </div>
 <p>Install dependencies with rosdep.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ rosdep update
-$ rosdep install --from-paths src --ignore-src -y --skip-keys <span class="s2">&quot;fastcdr rti-connext-dds-6.0.1 urdfdom_headers&quot;</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>rosdep<span class="w"> </span>update
+$<span class="w"> </span>rosdep<span class="w"> </span>install<span class="w"> </span>--from-paths<span class="w"> </span>src<span class="w"> </span>--ignore-src<span class="w"> </span>-y<span class="w"> </span>--skip-keys<span class="w"> </span><span class="s2">&quot;fastcdr rti-connext-dds-6.0.1 urdfdom_headers&quot;</span>
 </pre></div>
 </div>
 <p>Then build up to <code class="docutils literal notranslate"><span class="pre">performance_test</span></code> and configure it for ROS 2.
 See its <a class="reference external" href="https://gitlab.com/ApexAI/performance_test#ros-2-middleware-plugins">documentation</a>.
 We also need to build <code class="docutils literal notranslate"><span class="pre">ros2trace</span></code> to set up tracing using the <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">trace</span></code> command and <code class="docutils literal notranslate"><span class="pre">tracetools_analysis</span></code> to analyze the data.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ colcon build --packages-up-to ros2trace tracetools_analysis performance_test --cmake-args -DPERFORMANCE_TEST_RCLCPP_ENABLED<span class="o">=</span>ON
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>colcon<span class="w"> </span>build<span class="w"> </span>--packages-up-to<span class="w"> </span>ros2trace<span class="w"> </span>tracetools_analysis<span class="w"> </span>performance_test<span class="w"> </span>--cmake-args<span class="w"> </span>-DPERFORMANCE_TEST_RCLCPP_ENABLED<span class="o">=</span>ON
 </pre></div>
 </div>
 <p>You should see the following message once <code class="docutils literal notranslate"><span class="pre">tracetools</span></code> is done building:</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>LTTng found: tracing enabled
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>LTTng<span class="w"> </span>found:<span class="w"> </span>tracing<span class="w"> </span>enabled
 </pre></div>
 </div>
 <p>This confirms that LTTng was properly detected and that the instrumentation built into the ROS 2 core is enabled.</p>
@@ -148,7 +151,7 @@ We also need to build <code class="docutils literal notranslate"><span class="pr
 <p>Start an LTTng session daemon.
 For userspace tracing, the daemon does not need to be started as <code class="docutils literal notranslate"><span class="pre">root</span></code>.
 Note that a non-root daemon will be spawned automatically by <code class="docutils literal notranslate"><span class="pre">ros2</span> <span class="pre">trace</span></code> if it is not already running.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ lttng-sessiond --daemonize
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>lttng-sessiond<span class="w"> </span>--daemonize
 </pre></div>
 </div>
 <p>In one terminal, source the workspace and setup tracing.
@@ -156,42 +159,42 @@ We need to explicitly use the <code class="docutils literal notranslate"><span c
 When running the command, a list of ROS 2 userspace events will be printed.
 It will also print the path to the directory that will contain the resulting trace (under <code class="docutils literal notranslate"><span class="pre">~/.ros/tracing</span></code>).
 Press enter to start tracing.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="c1"># terminal 1</span>
-$ <span class="nb">cd</span> ~/tracing_ws
-$ <span class="nb">source</span> install/setup.bash
-$ ros2 trace --session-name perf-test --kernel --list
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="c1"># terminal 1</span>
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/tracing_ws
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>install/setup.bash
+$<span class="w"> </span>ros2<span class="w"> </span>trace<span class="w"> </span>--session-name<span class="w"> </span>perf-test<span class="w"> </span>--kernel<span class="w"> </span>--list
 </pre></div>
 </div>
 <p>In a second terminal, source the workspace.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="c1"># terminal 2</span>
-$ <span class="nb">cd</span> ~/tracing_ws
-$ <span class="nb">source</span> install/setup.bash
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="c1"># terminal 2</span>
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/tracing_ws
+$<span class="w"> </span><span class="nb">source</span><span class="w"> </span>install/setup.bash
 </pre></div>
 </div>
 <p>Then run the <code class="docutils literal notranslate"><span class="pre">performance_test</span></code> experiment.
 We simply create an experiment with a node publishing ~1 MB messages to another node as fast as possible for 60 seconds using the second highest real-time priority so that we don’t interfere with critical kernel threads.
 We need to run <code class="docutils literal notranslate"><span class="pre">performance_test</span></code> as root to be able to use real-time priorities.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="c1"># terminal 2</span>
-$ sudo ./install/performance_test/lib/performance_test/perf_test -c rclcpp-single-threaded-executor -p <span class="m">1</span> -s <span class="m">1</span> -r <span class="m">0</span> -m Array1m --reliability RELIABLE --max-runtime <span class="m">60</span> --use-rt-prio <span class="m">98</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="c1"># terminal 2</span>
+$<span class="w"> </span>sudo<span class="w"> </span>./install/performance_test/lib/performance_test/perf_test<span class="w"> </span>-c<span class="w"> </span>rclcpp-single-threaded-executor<span class="w"> </span>-p<span class="w"> </span><span class="m">1</span><span class="w"> </span>-s<span class="w"> </span><span class="m">1</span><span class="w"> </span>-r<span class="w"> </span><span class="m">0</span><span class="w"> </span>-m<span class="w"> </span>Array1m<span class="w"> </span>--reliability<span class="w"> </span>RELIABLE<span class="w"> </span>--max-runtime<span class="w"> </span><span class="m">60</span><span class="w"> </span>--use-rt-prio<span class="w"> </span><span class="m">98</span>
 </pre></div>
 </div>
 <p>If that last command doesn’t work for you (with an error like: “error while loading shared libraries”), run the slightly-different command below.
 This is because, for security reasons, we need to manually pass <code class="docutils literal notranslate"><span class="pre">*PATH</span></code> environment variables for some shared libraries to be found (see <a class="reference external" href="https://unix.stackexchange.com/a/251374">this explanation</a>).</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ <span class="c1"># terminal 2</span>
-$ sudo env <span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PATH</span><span class="s2">&quot;</span> <span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$LD_LIBRARY_PATH</span><span class="s2">&quot;</span> ./install/performance_test/lib/performance_test/perf_test -c rclcpp-single-threaded-executor -p <span class="m">1</span> -s <span class="m">1</span> -r <span class="m">0</span> -m Array1m --reliability RELIABLE --max-runtime <span class="m">60</span> --use-rt-prio <span class="m">98</span>
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="c1"># terminal 2</span>
+$<span class="w"> </span>sudo<span class="w"> </span>env<span class="w"> </span><span class="nv">PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$PATH</span><span class="s2">&quot;</span><span class="w"> </span><span class="nv">LD_LIBRARY_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$LD_LIBRARY_PATH</span><span class="s2">&quot;</span><span class="w"> </span>./install/performance_test/lib/performance_test/perf_test<span class="w"> </span>-c<span class="w"> </span>rclcpp-single-threaded-executor<span class="w"> </span>-p<span class="w"> </span><span class="m">1</span><span class="w"> </span>-s<span class="w"> </span><span class="m">1</span><span class="w"> </span>-r<span class="w"> </span><span class="m">0</span><span class="w"> </span>-m<span class="w"> </span>Array1m<span class="w"> </span>--reliability<span class="w"> </span>RELIABLE<span class="w"> </span>--max-runtime<span class="w"> </span><span class="m">60</span><span class="w"> </span>--use-rt-prio<span class="w"> </span><span class="m">98</span>
 </pre></div>
 </div>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>If you’re not using a real-time kernel, simply run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="c1"># terminal 2</span>
-$ ./install/performance_test/lib/performance_test/perf_test -c rclcpp-single-threaded-executor -p <span class="m">1</span> -s <span class="m">1</span> -r <span class="m">0</span> -m Array1m --reliability RELIABLE --max-runtime <span class="m">60</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="c1"># terminal 2</span>
+$<span class="w"> </span>./install/performance_test/lib/performance_test/perf_test<span class="w"> </span>-c<span class="w"> </span>rclcpp-single-threaded-executor<span class="w"> </span>-p<span class="w"> </span><span class="m">1</span><span class="w"> </span>-s<span class="w"> </span><span class="m">1</span><span class="w"> </span>-r<span class="w"> </span><span class="m">0</span><span class="w"> </span>-m<span class="w"> </span>Array1m<span class="w"> </span>--reliability<span class="w"> </span>RELIABLE<span class="w"> </span>--max-runtime<span class="w"> </span><span class="m">60</span>
 </pre></div>
 </div>
 </div>
 <p>Once the experiment is done, in the first terminal, press enter again to stop tracing.
 Use <code class="docutils literal notranslate"><span class="pre">babeltrace</span></code> to quickly look at the resulting trace.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ babeltrace ~/.ros/tracing/perf-test
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>babeltrace<span class="w"> </span>~/.ros/tracing/perf-test
 </pre></div>
 </div>
 <p>The output of the above command is a human-readable version of the raw Common Trace Format (CTF) data, which is a list of trace events.
@@ -205,9 +208,9 @@ We can use it in a <a class="reference external" href="https://jupyter.org/">Jup
 The <code class="docutils literal notranslate"><span class="pre">tracetools_analysis</span></code> repository contains a <a class="reference external" href="https://gitlab.com/ros-tracing/tracetools_analysis/-/tree/master/tracetools_analysis/analysis">few sample notebooks</a>, including <a class="reference external" href="https://gitlab.com/ros-tracing/tracetools_analysis/-/blob/master/tracetools_analysis/analysis/callback_duration.ipynb">one notebook to analyze subscription callback durations</a>.</p>
 <p>For this guide, we will plot the durations of the subscription callback in the subscriber node.</p>
 <p>Install Jupyter notebook and bokeh, and then open the sample notebook.</p>
-<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$ sudo apt-get install -y jupyter-notebook
-$ pip3 install bokeh
-$ jupyter notebook ~/tracing_ws/src/tracetools_analysis/tracetools_analysis/analysis/callback_duration.ipynb
+<div class="highlight-sh notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>jupyter-notebook
+$<span class="w"> </span>pip3<span class="w"> </span>install<span class="w"> </span>bokeh
+$<span class="w"> </span>jupyter<span class="w"> </span>notebook<span class="w"> </span>~/tracing_ws/src/tracetools_analysis/tracetools_analysis/analysis/callback_duration.ipynb
 </pre></div>
 </div>
 <p>This will open the notebook in the browser.</p>
@@ -241,7 +244,7 @@ The <a class="reference external" href="https://github.com/ros2/ros2_tracing/blo
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, ROS 2 Real-Time Working Group.</p>
+    <p>&#169; Copyright 2024, ROS 2 Real-Time Working Group.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

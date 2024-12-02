@@ -1,22 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Instructions for performance_test real-time benchmark &mdash; ROS 2 Real-Time Working Group  documentation</title>
-      <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+
   
-        <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-        <script src="../_static/jquery.js"></script>
-        <script src="../_static/underscore.js"></script>
-        <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../_static/doctools.js"></script>
-        <script src="../_static/sphinx_highlight.js"></script>
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js?v=b3ba4146"></script>
+      <script src="../_static/doctools.js?v=888ff710"></script>
+      <script src="../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -29,12 +28,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../index.html" class="icon icon-home"> ROS 2 Real-Time Working Group
-            <img src="../_static/rtwg_image.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            ROS 2 Real-Time Working Group
+              <img src="../_static/rtwg_image.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -69,7 +72,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../index.html" class="icon icon-home"></a></li>
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="benchmarks.html">Benchmarks</a></li>
       <li class="breadcrumb-item active">Instructions for performance_test real-time benchmark</li>
       <li class="wy-breadcrumbs-aside">
@@ -105,49 +108,49 @@
 <section id="run-the-benchmarks">
 <h2>Run the benchmarks<a class="headerlink" href="#run-the-benchmarks" title="Permalink to this heading"></a></h2>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># It takes around 4 minutes</span>
-ros2 run performance_report runner <span class="se">\</span>
-  --log-dir perf_logs <span class="se">\</span>
-  --test-name experiments <span class="se">\</span>
-  --configs ~/performance_test_rt_cfg/runner/run_rt_experiment_single.yaml
+ros2<span class="w"> </span>run<span class="w"> </span>performance_report<span class="w"> </span>runner<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--log-dir<span class="w"> </span>perf_logs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--test-name<span class="w"> </span>experiments<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--configs<span class="w"> </span>~/performance_test_rt_cfg/runner/run_rt_experiment_single.yaml
 
 <span class="c1"># It takes around 24 minutes</span>
-ros2 run performance_report runner <span class="se">\</span>
-  --log-dir perf_logs <span class="se">\</span>
-  --test-name experiments <span class="se">\</span>
-  --configs ~/performance_test_rt_cfg/runner/run_rt_experiment_batch.yaml
+ros2<span class="w"> </span>run<span class="w"> </span>performance_report<span class="w"> </span>runner<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--log-dir<span class="w"> </span>perf_logs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--test-name<span class="w"> </span>experiments<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--configs<span class="w"> </span>~/performance_test_rt_cfg/runner/run_rt_experiment_batch.yaml
 </pre></div>
 </div>
 </section>
 <section id="generate-the-plots">
 <h2>Generate the plots<a class="headerlink" href="#generate-the-plots" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run performance_report plotter <span class="se">\</span>
-  --log-dir perf_logs <span class="se">\</span>
-  --configs ~/performance_test_rt_cfg/plotter/plot_experiment_single.yaml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>performance_report<span class="w"> </span>plotter<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--log-dir<span class="w"> </span>perf_logs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--configs<span class="w"> </span>~/performance_test_rt_cfg/plotter/plot_experiment_single.yaml
 
-ros2 run performance_report plotter <span class="se">\</span>
-  --log-dir perf_logs <span class="se">\</span>
-  --configs ~/performance_test_rt_cfg/plotter/plot_experiment_batch_prio90.yaml
+ros2<span class="w"> </span>run<span class="w"> </span>performance_report<span class="w"> </span>plotter<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--log-dir<span class="w"> </span>perf_logs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--configs<span class="w"> </span>~/performance_test_rt_cfg/plotter/plot_experiment_batch_prio90.yaml
 </pre></div>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run performance_report plotter <span class="se">\</span>
-  --log-dir perf_logs <span class="se">\</span>
-  --configs ~/performance_test_rt_cfg/plotter/plot_experiment_batch_prio0.yaml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>performance_report<span class="w"> </span>plotter<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--log-dir<span class="w"> </span>perf_logs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--configs<span class="w"> </span>~/performance_test_rt_cfg/plotter/plot_experiment_batch_prio0.yaml
 </pre></div>
 </div>
 </section>
 <section id="generate-the-reports">
 <h2>Generate the reports<a class="headerlink" href="#generate-the-reports" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2 run performance_report reporter <span class="se">\</span>
-  --log-dir perf_logs <span class="se">\</span>
-  --configs ~/performance_test_rt_cfg/reporter/report_experiment_single.yaml
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ros2<span class="w"> </span>run<span class="w"> </span>performance_report<span class="w"> </span>reporter<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--log-dir<span class="w"> </span>perf_logs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--configs<span class="w"> </span>~/performance_test_rt_cfg/reporter/report_experiment_single.yaml
 
-ros2 run performance_report reporter <span class="se">\</span>
-  --log-dir perf_logs <span class="se">\</span>
-  --configs ~/performance_test_rt_cfg/reporter/report_experiment_batch_prio90.yaml
+ros2<span class="w"> </span>run<span class="w"> </span>performance_report<span class="w"> </span>reporter<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--log-dir<span class="w"> </span>perf_logs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--configs<span class="w"> </span>~/performance_test_rt_cfg/reporter/report_experiment_batch_prio90.yaml
 
-ros2 run performance_report reporter <span class="se">\</span>
-  --log-dir perf_logs <span class="se">\</span>
-  --configs ~/performance_test_rt_cfg/reporter/report_experiment_batch_prio0.yaml
+ros2<span class="w"> </span>run<span class="w"> </span>performance_report<span class="w"> </span>reporter<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--log-dir<span class="w"> </span>perf_logs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--configs<span class="w"> </span>~/performance_test_rt_cfg/reporter/report_experiment_batch_prio0.yaml
 </pre></div>
 </div>
 </section>
@@ -164,7 +167,7 @@ ros2 run performance_report reporter <span class="se">\</span>
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, ROS 2 Real-Time Working Group.</p>
+    <p>&#169; Copyright 2024, ROS 2 Real-Time Working Group.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a

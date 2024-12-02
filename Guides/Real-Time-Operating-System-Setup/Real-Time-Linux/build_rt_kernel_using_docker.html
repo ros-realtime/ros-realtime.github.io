@@ -1,22 +1,21 @@
+
+
 <!DOCTYPE html>
-<html class="writer-html5" lang="en" >
+<html class="writer-html5" lang="en">
 <head>
-  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Build a Linux Real-Time kernel using docker &mdash; ROS 2 Real-Time Working Group  documentation</title>
-      <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
-      <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  <!--[if lt IE 9]>
-    <script src="../../../_static/js/html5shiv.min.js"></script>
-  <![endif]-->
+      <link rel="stylesheet" type="text/css" href="../../../_static/pygments.css?v=80d5e7a1" />
+      <link rel="stylesheet" type="text/css" href="../../../_static/css/theme.css?v=e59714d7" />
+
   
-        <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js"></script>
-        <script src="../../../_static/jquery.js"></script>
-        <script src="../../../_static/underscore.js"></script>
-        <script src="../../../_static/_sphinx_javascript_frameworks_compat.js"></script>
-        <script src="../../../_static/doctools.js"></script>
-        <script src="../../../_static/sphinx_highlight.js"></script>
+      <script src="../../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script data-url_root="../../../" id="documentation_options" src="../../../_static/documentation_options.js?v=b3ba4146"></script>
+      <script src="../../../_static/doctools.js?v=888ff710"></script>
+      <script src="../../../_static/sphinx_highlight.js?v=4825356b"></script>
     <script src="../../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../../genindex.html" />
     <link rel="search" title="Search" href="../../../search.html" />
@@ -29,12 +28,16 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
         <div class="wy-side-nav-search" >
-            <a href="../../../index.html" class="icon icon-home"> ROS 2 Real-Time Working Group
-            <img src="../../../_static/rtwg_image.png" class="logo" alt="Logo"/>
+
+          
+          
+          <a href="../../../index.html" class="icon icon-home">
+            ROS 2 Real-Time Working Group
+              <img src="../../../_static/rtwg_image.png" class="logo" alt="Logo"/>
           </a>
 <div role="search">
   <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
@@ -80,7 +83,7 @@
         <div class="rst-content">
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
-      <li><a href="../../../index.html" class="icon icon-home"></a></li>
+      <li><a href="../../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../../guides.html">Guides</a></li>
           <li class="breadcrumb-item"><a href="../rtos_setup.html">Real Time Operating System Setup</a></li>
           <li class="breadcrumb-item"><a href="rt_linux_index.html">Real-Time Linux</a></li>
@@ -113,10 +116,10 @@
 <section id="build-and-run-docker-container">
 <h2>Build and run docker container<a class="headerlink" href="#build-and-run-docker-container" title="Permalink to this heading"></a></h2>
 <p>For the local build:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ git clone https://github.com/ros-realtime/linux-real-time-kernel-builder
-$ <span class="nb">cd</span> linux-real-time-kernel-builder
-$ docker build -t rtwg-image .
-$ docker run -t -i rtwg-image bash
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ros-realtime/linux-real-time-kernel-builder
+$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>linux-real-time-kernel-builder
+$<span class="w"> </span>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>rtwg-image<span class="w"> </span>.
+$<span class="w"> </span>docker<span class="w"> </span>run<span class="w"> </span>-t<span class="w"> </span>-i<span class="w"> </span>rtwg-image<span class="w"> </span>bash
 </pre></div>
 </div>
 </section>
@@ -130,47 +133,47 @@ $ docker run -t -i rtwg-image bash
 <li><p>No CPU frequency scaling</p></li>
 </ul>
 <p>This is configured automatically by setting the following options:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ ./scripts/config -d CONFIG_PREEMPT <span class="se">\</span>
-$ ./scripts/config -e CONFIG_PREEMPT_RT <span class="se">\</span>
-$ ./scripts/config -d CONFIG_NO_HZ_IDLE <span class="se">\</span>
-$ ./scripts/config -e CONFIG_NO_HZ_FULL <span class="se">\</span>
-$ ./scripts/config -d CONFIG_HZ_250 <span class="se">\</span>
-$ ./scripts/config -e CONFIG_HZ_1000 <span class="se">\</span>
-$ ./scripts/config -d CONFIG_AUFS_FS <span class="se">\</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>./scripts/config<span class="w"> </span>-d<span class="w"> </span>CONFIG_PREEMPT<span class="w"> </span><span class="se">\</span>
+$<span class="w"> </span>./scripts/config<span class="w"> </span>-e<span class="w"> </span>CONFIG_PREEMPT_RT<span class="w"> </span><span class="se">\</span>
+$<span class="w"> </span>./scripts/config<span class="w"> </span>-d<span class="w"> </span>CONFIG_NO_HZ_IDLE<span class="w"> </span><span class="se">\</span>
+$<span class="w"> </span>./scripts/config<span class="w"> </span>-e<span class="w"> </span>CONFIG_NO_HZ_FULL<span class="w"> </span><span class="se">\</span>
+$<span class="w"> </span>./scripts/config<span class="w"> </span>-d<span class="w"> </span>CONFIG_HZ_250<span class="w"> </span><span class="se">\</span>
+$<span class="w"> </span>./scripts/config<span class="w"> </span>-e<span class="w"> </span>CONFIG_HZ_1000<span class="w"> </span><span class="se">\</span>
+$<span class="w"> </span>./scripts/config<span class="w"> </span>-d<span class="w"> </span>CONFIG_AUFS_FS<span class="w"> </span><span class="se">\</span>
 </pre></div>
 </div>
 <p>which corresponds to the following</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Enable CONFIG_PREEMPT_RT</span>
- -&gt; General Setup
-  -&gt; Preemption Model <span class="o">(</span>Fully Preemptible Kernel <span class="o">(</span>Real-Time<span class="o">))</span>
-   <span class="o">(</span>X<span class="o">)</span> Fully Preemptible Kernel <span class="o">(</span>Real-Time<span class="o">)</span>
+<span class="w"> </span>-&gt;<span class="w"> </span>General<span class="w"> </span>Setup
+<span class="w">  </span>-&gt;<span class="w"> </span>Preemption<span class="w"> </span>Model<span class="w"> </span><span class="o">(</span>Fully<span class="w"> </span>Preemptible<span class="w"> </span>Kernel<span class="w"> </span><span class="o">(</span>Real-Time<span class="o">))</span>
+<span class="w">   </span><span class="o">(</span>X<span class="o">)</span><span class="w"> </span>Fully<span class="w"> </span>Preemptible<span class="w"> </span>Kernel<span class="w"> </span><span class="o">(</span>Real-Time<span class="o">)</span>
 
 <span class="c1"># Enable CONFIG_HIGH_RES_TIMERS</span>
- -&gt; General setup
-  -&gt; Timers subsystem
-   <span class="o">[</span>*<span class="o">]</span> High Resolution Timer Support
+<span class="w"> </span>-&gt;<span class="w"> </span>General<span class="w"> </span>setup
+<span class="w">  </span>-&gt;<span class="w"> </span>Timers<span class="w"> </span>subsystem
+<span class="w">   </span><span class="o">[</span>*<span class="o">]</span><span class="w"> </span>High<span class="w"> </span>Resolution<span class="w"> </span>Timer<span class="w"> </span>Support
 
 <span class="c1"># Enable CONFIG_NO_HZ_FULL</span>
- -&gt; General setup
-  -&gt; Timers subsystem
-   -&gt; Timer tick handling <span class="o">(</span>Full dynticks system <span class="o">(</span>tickless<span class="o">))</span>
-    <span class="o">(</span>X<span class="o">)</span> Full dynticks system <span class="o">(</span>tickless<span class="o">)</span>
+<span class="w"> </span>-&gt;<span class="w"> </span>General<span class="w"> </span>setup
+<span class="w">  </span>-&gt;<span class="w"> </span>Timers<span class="w"> </span>subsystem
+<span class="w">   </span>-&gt;<span class="w"> </span>Timer<span class="w"> </span>tick<span class="w"> </span>handling<span class="w"> </span><span class="o">(</span>Full<span class="w"> </span>dynticks<span class="w"> </span>system<span class="w"> </span><span class="o">(</span>tickless<span class="o">))</span>
+<span class="w">    </span><span class="o">(</span>X<span class="o">)</span><span class="w"> </span>Full<span class="w"> </span>dynticks<span class="w"> </span>system<span class="w"> </span><span class="o">(</span>tickless<span class="o">)</span>
 
 <span class="c1"># Set CONFIG_HZ_1000</span>
- -&gt; Kernel Features
-  -&gt; Timer frequency <span class="o">(</span><span class="m">1000</span> HZ<span class="o">)</span>
-   <span class="o">(</span>X<span class="o">)</span> <span class="m">1000</span> HZ
+<span class="w"> </span>-&gt;<span class="w"> </span>Kernel<span class="w"> </span>Features
+<span class="w">  </span>-&gt;<span class="w"> </span>Timer<span class="w"> </span>frequency<span class="w"> </span><span class="o">(</span><span class="m">1000</span><span class="w"> </span>HZ<span class="o">)</span>
+<span class="w">   </span><span class="o">(</span>X<span class="o">)</span><span class="w"> </span><span class="m">1000</span><span class="w"> </span>HZ
 
 <span class="c1"># Set CPU_FREQ_DEFAULT_GOV_PERFORMANCE [=y]</span>
- -&gt; CPU Power Management
-  -&gt; CPU Frequency scaling
-   -&gt; CPU Frequency scaling <span class="o">(</span>CPU_FREQ <span class="o">[=</span>y<span class="o">])</span>
-    -&gt; Default CPUFreq governor <span class="o">(</span>&lt;choice&gt; <span class="o">[=</span>y<span class="o">])</span>
-     <span class="o">(</span>X<span class="o">)</span> performance
+<span class="w"> </span>-&gt;<span class="w"> </span>CPU<span class="w"> </span>Power<span class="w"> </span>Management
+<span class="w">  </span>-&gt;<span class="w"> </span>CPU<span class="w"> </span>Frequency<span class="w"> </span>scaling
+<span class="w">   </span>-&gt;<span class="w"> </span>CPU<span class="w"> </span>Frequency<span class="w"> </span>scaling<span class="w"> </span><span class="o">(</span>CPU_FREQ<span class="w"> </span><span class="o">[=</span>y<span class="o">])</span>
+<span class="w">    </span>-&gt;<span class="w"> </span>Default<span class="w"> </span>CPUFreq<span class="w"> </span>governor<span class="w"> </span><span class="o">(</span>&lt;choice&gt;<span class="w"> </span><span class="o">[=</span>y<span class="o">])</span>
+<span class="w">     </span><span class="o">(</span>X<span class="o">)</span><span class="w"> </span>performance
 
 <span class="c1"># Disable CONFIG_AUFS_FS, otherwise RT kernel build breaks</span>
- x     -&gt; File systems                                                                                                                          x
-  x <span class="o">(</span><span class="m">1</span><span class="o">)</span>   -&gt; Miscellaneous filesystems <span class="o">(</span>MISC_FILESYSTEMS <span class="o">[=</span>y<span class="o">])</span>
+<span class="w"> </span>x<span class="w">     </span>-&gt;<span class="w"> </span>File<span class="w"> </span>systems<span class="w">                                                                                                                          </span>x
+<span class="w">  </span>x<span class="w"> </span><span class="o">(</span><span class="m">1</span><span class="o">)</span><span class="w">   </span>-&gt;<span class="w"> </span>Miscellaneous<span class="w"> </span>filesystems<span class="w"> </span><span class="o">(</span>MISC_FILESYSTEMS<span class="w"> </span><span class="o">[=</span>y<span class="o">])</span>
 </pre></div>
 </div>
 <p>Todo:</p>
@@ -179,23 +182,23 @@ $ ./scripts/config -d CONFIG_AUFS_FS <span class="se">\</span>
 <li><p><code class="docutils literal notranslate"><span class="pre">CONFIG_CPU_IDLE=n</span></code>: Disable transitions to low-power states</p></li>
 </ul>
 <p>If you need to reconfigure it, run</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> linux-raspi-5.4.0/
-$ make <span class="nv">ARCH</span><span class="o">=</span>arm64 <span class="nv">CROSS_COMPILE</span><span class="o">=</span>aarch64-linux-gnu- menuconfig
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>linux-raspi-5.4.0/
+$<span class="w"> </span>make<span class="w"> </span><span class="nv">ARCH</span><span class="o">=</span>arm64<span class="w"> </span><span class="nv">CROSS_COMPILE</span><span class="o">=</span>aarch64-linux-gnu-<span class="w"> </span>menuconfig
 </pre></div>
 </div>
 </section>
 <section id="kernel-build">
 <h2>Kernel build<a class="headerlink" href="#kernel-build" title="Permalink to this heading"></a></h2>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> linux-raspi-5.4.0/
-$ make <span class="nv">ARCH</span><span class="o">=</span>arm64 <span class="nv">CROSS_COMPILE</span><span class="o">=</span>aarch64-linux-gnu- -j <span class="sb">`</span>nproc<span class="sb">`</span> deb-pkg
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>linux-raspi-5.4.0/
+$<span class="w"> </span>make<span class="w"> </span><span class="nv">ARCH</span><span class="o">=</span>arm64<span class="w"> </span><span class="nv">CROSS_COMPILE</span><span class="o">=</span>aarch64-linux-gnu-<span class="w"> </span>-j<span class="w"> </span><span class="sb">`</span>nproc<span class="sb">`</span><span class="w"> </span>deb-pkg
 </pre></div>
 </div>
 <p>You need 32GB free disk space to build it, it takes a while, and the results are located here:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>user@3e9fd281ed2a:~/linux_build/linux-raspi-5.4.0$ ls -la ../*.deb
--rw-r--r-- <span class="m">1</span> user user  <span class="m">11462528</span> Jun <span class="m">17</span> <span class="m">09</span>:46 ../linux-headers-5.4.114-rt57_5.4.114-rt57-1_arm64.deb
--rw-r--r-- <span class="m">1</span> user user <span class="m">494790284</span> Jun <span class="m">17</span> <span class="m">09</span>:50 ../linux-image-5.4.114-rt57-dbg_5.4.114-rt57-1_arm64.deb
--rw-r--r-- <span class="m">1</span> user user  <span class="m">39756144</span> Jun <span class="m">17</span> <span class="m">09</span>:46 ../linux-image-5.4.114-rt57_5.4.114-rt57-1_arm64.deb
--rw-r--r-- <span class="m">1</span> user user   <span class="m">1055224</span> Jun <span class="m">17</span> <span class="m">09</span>:46 ../linux-libc-dev_5.4.114-rt57-1_arm64.deb
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>user@3e9fd281ed2a:~/linux_build/linux-raspi-5.4.0$<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>../*.deb
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>user<span class="w"> </span>user<span class="w">  </span><span class="m">11462528</span><span class="w"> </span>Jun<span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">09</span>:46<span class="w"> </span>../linux-headers-5.4.114-rt57_5.4.114-rt57-1_arm64.deb
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>user<span class="w"> </span>user<span class="w"> </span><span class="m">494790284</span><span class="w"> </span>Jun<span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">09</span>:50<span class="w"> </span>../linux-image-5.4.114-rt57-dbg_5.4.114-rt57-1_arm64.deb
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>user<span class="w"> </span>user<span class="w">  </span><span class="m">39756144</span><span class="w"> </span>Jun<span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">09</span>:46<span class="w"> </span>../linux-image-5.4.114-rt57_5.4.114-rt57-1_arm64.deb
+-rw-r--r--<span class="w"> </span><span class="m">1</span><span class="w"> </span>user<span class="w"> </span>user<span class="w">   </span><span class="m">1055224</span><span class="w"> </span>Jun<span class="w"> </span><span class="m">17</span><span class="w"> </span><span class="m">09</span>:46<span class="w"> </span>../linux-libc-dev_5.4.114-rt57-1_arm64.deb
 </pre></div>
 </div>
 </section>
@@ -218,41 +221,41 @@ ubuntu/ubuntu
 <h3>Copy a new kernel to your system and install it<a class="headerlink" href="#copy-a-new-kernel-to-your-system-and-install-it" title="Permalink to this heading"></a></h3>
 <p>Todo: Add instructions explaining how to move the files to the Raspberry PI</p>
 <p>Assumed you have already copied all *.deb packages to your <code class="docutils literal notranslate"><span class="pre">$HOME/ubuntu</span></code> directory</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> <span class="nv">$HOME</span>/ubuntu
-$ sudo dpkg -i *.deb
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span><span class="nv">$HOME</span>/ubuntu
+$<span class="w"> </span>sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>*.deb
 </pre></div>
 </div>
 <p>Now it is necessary to adjust vmlinuz and initrd.img links. First, we locate the kernel that we are using:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ubuntu@ubuntu:/boot$ uname -a
-Linux ubuntu <span class="m">5</span>.4.0-1028-raspi <span class="c1">#31-Ubuntu SMP PREEMPT Wed Jan 20 11:30:45 UTC 2021 aarch64 aarch64 aarch64 GNU/Linux</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ubuntu@ubuntu:/boot$<span class="w"> </span>uname<span class="w"> </span>-a
+Linux<span class="w"> </span>ubuntu<span class="w"> </span><span class="m">5</span>.4.0-1028-raspi<span class="w"> </span><span class="c1">#31-Ubuntu SMP PREEMPT Wed Jan 20 11:30:45 UTC 2021 aarch64 aarch64 aarch64 GNU/Linux</span>
 </pre></div>
 </div>
 <p>We check the real-time kernel version that we installed, in this case is <code class="docutils literal notranslate"><span class="pre">5.4.114-rt57</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ubuntu@ubuntu:~$ ls /boot/
-System.map-5.4.0-1028-raspi  config-5.4.0-1028-raspi  dtb                   dtbs        initrd.img-5.4.0-1028-raspi  initrd.img.old            vmlinuz-5.4.0-1036-raspi
-System.map-5.4.0-1036-raspi  config-5.4.0-1036-raspi  dtb-5.4.0-1036-raspi  firmware    initrd.img-5.4.0-1036-raspi  vmlinuz                   vmlinuz-5.4.114-rt57
-System.map-5.4.114-rt57      config-5.4.114-rt57      dtb-5.4.114-rt57      initrd.img  initrd.img-5.4.114-rt57      vmlinuz-5.4.0-1028-raspi  vmlinuz.old
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ubuntu@ubuntu:~$<span class="w"> </span>ls<span class="w"> </span>/boot/
+System.map-5.4.0-1028-raspi<span class="w">  </span>config-5.4.0-1028-raspi<span class="w">  </span>dtb<span class="w">                   </span>dtbs<span class="w">        </span>initrd.img-5.4.0-1028-raspi<span class="w">  </span>initrd.img.old<span class="w">            </span>vmlinuz-5.4.0-1036-raspi
+System.map-5.4.0-1036-raspi<span class="w">  </span>config-5.4.0-1036-raspi<span class="w">  </span>dtb-5.4.0-1036-raspi<span class="w">  </span>firmware<span class="w">    </span>initrd.img-5.4.0-1036-raspi<span class="w">  </span>vmlinuz<span class="w">                   </span>vmlinuz-5.4.114-rt57
+System.map-5.4.114-rt57<span class="w">      </span>config-5.4.114-rt57<span class="w">      </span>dtb-5.4.114-rt57<span class="w">      </span>initrd.img<span class="w">  </span>initrd.img-5.4.114-rt57<span class="w">      </span>vmlinuz-5.4.0-1028-raspi<span class="w">  </span>vmlinuz.old
 </pre></div>
 </div>
 <p>Now we replace the old kernel with the new real-time one:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ <span class="nb">cd</span> /boot
-$ sudo ln -s -f vmlinuz-5.4.114-rt57 vmlinuz
-$ sudo ln -s -f vmlinuz-5.4.0-1028-raspi vmlinuz.old
-$ sudo ln -s -f initrd.img-5.4.114-rt57 initrd.img
-$ sudo ln -s -f initrd.img-5.4.0-1028-raspi initrd.img.old
-$ sudo cp vmlinuz firmware/vmlinuz
-$ sudo cp vmlinuz firmware/vmlinuz.bak
-$ sudo cp initrd.img firmware/initrd.img
-$ sudo cp initrd.img firmware/initrd.img.bak
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/boot
+$<span class="w"> </span>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>-f<span class="w"> </span>vmlinuz-5.4.114-rt57<span class="w"> </span>vmlinuz
+$<span class="w"> </span>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>-f<span class="w"> </span>vmlinuz-5.4.0-1028-raspi<span class="w"> </span>vmlinuz.old
+$<span class="w"> </span>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>-f<span class="w"> </span>initrd.img-5.4.114-rt57<span class="w"> </span>initrd.img
+$<span class="w"> </span>sudo<span class="w"> </span>ln<span class="w"> </span>-s<span class="w"> </span>-f<span class="w"> </span>initrd.img-5.4.0-1028-raspi<span class="w"> </span>initrd.img.old
+$<span class="w"> </span>sudo<span class="w"> </span>cp<span class="w"> </span>vmlinuz<span class="w"> </span>firmware/vmlinuz
+$<span class="w"> </span>sudo<span class="w"> </span>cp<span class="w"> </span>vmlinuz<span class="w"> </span>firmware/vmlinuz.bak
+$<span class="w"> </span>sudo<span class="w"> </span>cp<span class="w"> </span>initrd.img<span class="w"> </span>firmware/initrd.img
+$<span class="w"> </span>sudo<span class="w"> </span>cp<span class="w"> </span>initrd.img<span class="w"> </span>firmware/initrd.img.bak
 
-$ sudo reboot
+$<span class="w"> </span>sudo<span class="w"> </span>reboot
 </pre></div>
 </div>
 </section>
 <section id="configure-boot-options">
 <h3>Configure boot options<a class="headerlink" href="#configure-boot-options" title="Permalink to this heading"></a></h3>
 <p>Inside the Raspberry PI, add the following at the end of the line in <code class="docutils literal notranslate"><span class="pre">/boot/firmware/cmdline.txt</span></code>:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ sudo vim /boot/firmware/cmdline.txt
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>sudo<span class="w"> </span>vim<span class="w"> </span>/boot/firmware/cmdline.txt
 <span class="c1">#  dwc_otg.fiq_fsm_enable=0 dwc_otg.fiq_enable=0 dwc_otg.nak_holdoff=0 dwg_otg.speed=1 rcu_nocbs=0 nohz_full=1-3 isolcpus=1-3 audit=0 watchdog=0 skew_tick=1</span>
 </pre></div>
 </div>
@@ -275,71 +278,71 @@ $ sudo reboot
 <section id="verify-that-eveything-is-correctly-configured">
 <h3>Verify that eveything is correctly configured<a class="headerlink" href="#verify-that-eveything-is-correctly-configured" title="Permalink to this heading"></a></h3>
 <p>After reboot you should see a new RT kernel installed</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ubuntu@ubuntu:/boot$ uname -a
-Linux ubuntu <span class="m">5</span>.4.114-rt57 <span class="c1">#1 SMP PREEMPT_RT Thu Jun 17 09:21:41 UTC 2021 aarch64 aarch64 aarch64 GNU/Linux</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ubuntu@ubuntu:/boot$<span class="w"> </span>uname<span class="w"> </span>-a
+Linux<span class="w"> </span>ubuntu<span class="w"> </span><span class="m">5</span>.4.114-rt57<span class="w"> </span><span class="c1">#1 SMP PREEMPT_RT Thu Jun 17 09:21:41 UTC 2021 aarch64 aarch64 aarch64 GNU/Linux</span>
 </pre></div>
 </div>
 <p>Check that fiq is actually disabled:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ubuntu@ubuntu:~$ dmesg <span class="p">|</span> grep -i fiq
-<span class="o">[</span>    <span class="m">0</span>.000000<span class="o">]</span> Kernel <span class="nb">command</span> line:  <span class="nv">coherent_pool</span><span class="o">=</span>1M <span class="m">8250</span>.nr_uarts<span class="o">=</span><span class="m">1</span> snd_bcm2835.enable_compat_alsa<span class="o">=</span><span class="m">0</span> snd_bcm2835.enable_hdmi<span class="o">=</span><span class="m">1</span> bcm2708_fb.fbwidth<span class="o">=</span><span class="m">0</span> bcm2708_fb.fbheight<span class="o">=</span><span class="m">0</span> bcm2708_fb.fbswap<span class="o">=</span><span class="m">1</span> smsc95xx.macaddr<span class="o">=</span>DC:A6:32:A7:32:00 vc_mem.mem_base<span class="o">=</span>0x3ec00000 vc_mem.mem_size<span class="o">=</span>0x40000000  net.ifnames<span class="o">=</span><span class="m">0</span> dwc_otg.lpm_enable<span class="o">=</span><span class="m">0</span> <span class="nv">console</span><span class="o">=</span>ttyS0,115200 <span class="nv">console</span><span class="o">=</span>tty1 <span class="nv">root</span><span class="o">=</span><span class="nv">LABEL</span><span class="o">=</span>writable <span class="nv">rootfstype</span><span class="o">=</span>ext4 <span class="nv">elevator</span><span class="o">=</span>deadline rootwait fixrtc dwc_otg.fiq_fsm_enable<span class="o">=</span><span class="m">0</span> dwc_otg.fiq_enable<span class="o">=</span><span class="m">0</span> dwc_otg.nak_holdoff<span class="o">=</span><span class="m">0</span> dwg_otg.speed<span class="o">=</span><span class="m">1</span> <span class="nv">rcu_nocbs</span><span class="o">=</span><span class="m">0</span> <span class="nv">nohz_full</span><span class="o">=</span><span class="m">1</span>-3 <span class="nv">isolcpus</span><span class="o">=</span><span class="m">1</span>-3 quiet splash
-<span class="o">[</span>    <span class="m">1</span>.771203<span class="o">]</span> dwc_otg: FIQ disabled
-<span class="o">[</span>    <span class="m">1</span>.771212<span class="o">]</span> dwc_otg: FIQ split-transaction FSM disabled
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ubuntu@ubuntu:~$<span class="w"> </span>dmesg<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span>fiq
+<span class="o">[</span><span class="w">    </span><span class="m">0</span>.000000<span class="o">]</span><span class="w"> </span>Kernel<span class="w"> </span><span class="nb">command</span><span class="w"> </span>line:<span class="w">  </span><span class="nv">coherent_pool</span><span class="o">=</span>1M<span class="w"> </span><span class="m">8250</span>.nr_uarts<span class="o">=</span><span class="m">1</span><span class="w"> </span>snd_bcm2835.enable_compat_alsa<span class="o">=</span><span class="m">0</span><span class="w"> </span>snd_bcm2835.enable_hdmi<span class="o">=</span><span class="m">1</span><span class="w"> </span>bcm2708_fb.fbwidth<span class="o">=</span><span class="m">0</span><span class="w"> </span>bcm2708_fb.fbheight<span class="o">=</span><span class="m">0</span><span class="w"> </span>bcm2708_fb.fbswap<span class="o">=</span><span class="m">1</span><span class="w"> </span>smsc95xx.macaddr<span class="o">=</span>DC:A6:32:A7:32:00<span class="w"> </span>vc_mem.mem_base<span class="o">=</span>0x3ec00000<span class="w"> </span>vc_mem.mem_size<span class="o">=</span>0x40000000<span class="w">  </span>net.ifnames<span class="o">=</span><span class="m">0</span><span class="w"> </span>dwc_otg.lpm_enable<span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">console</span><span class="o">=</span>ttyS0,115200<span class="w"> </span><span class="nv">console</span><span class="o">=</span>tty1<span class="w"> </span><span class="nv">root</span><span class="o">=</span><span class="nv">LABEL</span><span class="o">=</span>writable<span class="w"> </span><span class="nv">rootfstype</span><span class="o">=</span>ext4<span class="w"> </span><span class="nv">elevator</span><span class="o">=</span>deadline<span class="w"> </span>rootwait<span class="w"> </span>fixrtc<span class="w"> </span>dwc_otg.fiq_fsm_enable<span class="o">=</span><span class="m">0</span><span class="w"> </span>dwc_otg.fiq_enable<span class="o">=</span><span class="m">0</span><span class="w"> </span>dwc_otg.nak_holdoff<span class="o">=</span><span class="m">0</span><span class="w"> </span>dwg_otg.speed<span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="nv">rcu_nocbs</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="nv">nohz_full</span><span class="o">=</span><span class="m">1</span>-3<span class="w"> </span><span class="nv">isolcpus</span><span class="o">=</span><span class="m">1</span>-3<span class="w"> </span>quiet<span class="w"> </span>splash
+<span class="o">[</span><span class="w">    </span><span class="m">1</span>.771203<span class="o">]</span><span class="w"> </span>dwc_otg:<span class="w"> </span>FIQ<span class="w"> </span>disabled
+<span class="o">[</span><span class="w">    </span><span class="m">1</span>.771212<span class="o">]</span><span class="w"> </span>dwc_otg:<span class="w"> </span>FIQ<span class="w"> </span>split-transaction<span class="w"> </span>FSM<span class="w"> </span>disabled
 </pre></div>
 </div>
 <p>Check that interrupts, except timers, are only handled by CPU0:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ubuntu@ubuntu:~$ cat /proc/interrupts
-           CPU0       CPU1       CPU2       CPU3       
-  <span class="m">1</span>:          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>     GICv2  <span class="m">25</span> Level     vgic
-  <span class="m">3</span>:     <span class="m">306043</span>        <span class="m">106</span>        <span class="m">104</span>        <span class="m">103</span>     GICv2  <span class="m">30</span> Level     arch_timer
-  <span class="m">4</span>:          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>     GICv2  <span class="m">27</span> Level     kvm guest vtimer
- <span class="m">11</span>:      <span class="m">41860</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>     GICv2  <span class="m">65</span> Level     fe00b880.mailbox
- <span class="m">15</span>:          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>     GICv2 <span class="m">150</span> Level     fe204000.spi
- <span class="m">16</span>:       <span class="m">1143</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>     GICv2 <span class="m">125</span> Level     ttyS0
- <span class="m">17</span>:          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>     GICv2 <span class="m">149</span> Level     fe804000.i2c
- <span class="m">20</span>:          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>     GICv2 <span class="m">114</span> Level     DMA IRQ
- <span class="m">22</span>:          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>     GICv2 <span class="m">116</span> Level     DMA IRQ
- <span class="m">23</span>:        <span class="m">342</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>     GICv2 <span class="m">117</span> Level     DMA IRQ
- <span class="m">27</span>:         <span class="m">47</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>     GICv2  <span class="m">66</span> Level     VCHIQ doorbell
- <span class="m">28</span>:      <span class="m">20553</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>     GICv2 <span class="m">158</span> Level     mmc1, mmc0
- <span class="m">29</span>:          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>     GICv2  <span class="m">48</span> Level     arm-pmu
- <span class="m">30</span>:          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>     GICv2  <span class="m">49</span> Level     arm-pmu
- <span class="m">31</span>:          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>     GICv2  <span class="m">50</span> Level     arm-pmu
- <span class="m">32</span>:          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>     GICv2  <span class="m">51</span> Level     arm-pmu
- <span class="m">34</span>:        <span class="m">840</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>     GICv2 <span class="m">189</span> Level     eth0
- <span class="m">35</span>:        <span class="m">475</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>     GICv2 <span class="m">190</span> Level     eth0
- <span class="m">41</span>:          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>     GICv2 <span class="m">175</span> Level     PCIe PME, aerdrv
- <span class="m">42</span>:         <span class="m">45</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>  BRCM STB PCIe MSI <span class="m">524288</span> Edge      xhci_hcd
-IPI0:        <span class="m">31</span>         <span class="m">14</span>         <span class="m">14</span>         <span class="m">14</span>       Rescheduling interrupts
-IPI1:         <span class="m">0</span>        <span class="m">277</span>        <span class="m">277</span>        <span class="m">278</span>       Function call interrupts
-IPI2:         <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>       CPU stop interrupts
-IPI3:         <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>       CPU stop <span class="o">(</span><span class="k">for</span> crash dump<span class="o">)</span> interrupts
-IPI4:         <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>       Timer broadcast interrupts
-IPI5:     <span class="m">21717</span>          <span class="m">8</span>          <span class="m">8</span>          <span class="m">6</span>       IRQ work interrupts
-IPI6:         <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>       CPU wake-up interrupts
-Err:          <span class="m">0</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ubuntu@ubuntu:~$<span class="w"> </span>cat<span class="w"> </span>/proc/interrupts
+<span class="w">           </span>CPU0<span class="w">       </span>CPU1<span class="w">       </span>CPU2<span class="w">       </span>CPU3<span class="w">       </span>
+<span class="w">  </span><span class="m">1</span>:<span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">     </span>GICv2<span class="w">  </span><span class="m">25</span><span class="w"> </span>Level<span class="w">     </span>vgic
+<span class="w">  </span><span class="m">3</span>:<span class="w">     </span><span class="m">306043</span><span class="w">        </span><span class="m">106</span><span class="w">        </span><span class="m">104</span><span class="w">        </span><span class="m">103</span><span class="w">     </span>GICv2<span class="w">  </span><span class="m">30</span><span class="w"> </span>Level<span class="w">     </span>arch_timer
+<span class="w">  </span><span class="m">4</span>:<span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">     </span>GICv2<span class="w">  </span><span class="m">27</span><span class="w"> </span>Level<span class="w">     </span>kvm<span class="w"> </span>guest<span class="w"> </span>vtimer
+<span class="w"> </span><span class="m">11</span>:<span class="w">      </span><span class="m">41860</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">     </span>GICv2<span class="w">  </span><span class="m">65</span><span class="w"> </span>Level<span class="w">     </span>fe00b880.mailbox
+<span class="w"> </span><span class="m">15</span>:<span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">     </span>GICv2<span class="w"> </span><span class="m">150</span><span class="w"> </span>Level<span class="w">     </span>fe204000.spi
+<span class="w"> </span><span class="m">16</span>:<span class="w">       </span><span class="m">1143</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">     </span>GICv2<span class="w"> </span><span class="m">125</span><span class="w"> </span>Level<span class="w">     </span>ttyS0
+<span class="w"> </span><span class="m">17</span>:<span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">     </span>GICv2<span class="w"> </span><span class="m">149</span><span class="w"> </span>Level<span class="w">     </span>fe804000.i2c
+<span class="w"> </span><span class="m">20</span>:<span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">     </span>GICv2<span class="w"> </span><span class="m">114</span><span class="w"> </span>Level<span class="w">     </span>DMA<span class="w"> </span>IRQ
+<span class="w"> </span><span class="m">22</span>:<span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">     </span>GICv2<span class="w"> </span><span class="m">116</span><span class="w"> </span>Level<span class="w">     </span>DMA<span class="w"> </span>IRQ
+<span class="w"> </span><span class="m">23</span>:<span class="w">        </span><span class="m">342</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">     </span>GICv2<span class="w"> </span><span class="m">117</span><span class="w"> </span>Level<span class="w">     </span>DMA<span class="w"> </span>IRQ
+<span class="w"> </span><span class="m">27</span>:<span class="w">         </span><span class="m">47</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">     </span>GICv2<span class="w">  </span><span class="m">66</span><span class="w"> </span>Level<span class="w">     </span>VCHIQ<span class="w"> </span>doorbell
+<span class="w"> </span><span class="m">28</span>:<span class="w">      </span><span class="m">20553</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">     </span>GICv2<span class="w"> </span><span class="m">158</span><span class="w"> </span>Level<span class="w">     </span>mmc1,<span class="w"> </span>mmc0
+<span class="w"> </span><span class="m">29</span>:<span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">     </span>GICv2<span class="w">  </span><span class="m">48</span><span class="w"> </span>Level<span class="w">     </span>arm-pmu
+<span class="w"> </span><span class="m">30</span>:<span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">     </span>GICv2<span class="w">  </span><span class="m">49</span><span class="w"> </span>Level<span class="w">     </span>arm-pmu
+<span class="w"> </span><span class="m">31</span>:<span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">     </span>GICv2<span class="w">  </span><span class="m">50</span><span class="w"> </span>Level<span class="w">     </span>arm-pmu
+<span class="w"> </span><span class="m">32</span>:<span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">     </span>GICv2<span class="w">  </span><span class="m">51</span><span class="w"> </span>Level<span class="w">     </span>arm-pmu
+<span class="w"> </span><span class="m">34</span>:<span class="w">        </span><span class="m">840</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">     </span>GICv2<span class="w"> </span><span class="m">189</span><span class="w"> </span>Level<span class="w">     </span>eth0
+<span class="w"> </span><span class="m">35</span>:<span class="w">        </span><span class="m">475</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">     </span>GICv2<span class="w"> </span><span class="m">190</span><span class="w"> </span>Level<span class="w">     </span>eth0
+<span class="w"> </span><span class="m">41</span>:<span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">     </span>GICv2<span class="w"> </span><span class="m">175</span><span class="w"> </span>Level<span class="w">     </span>PCIe<span class="w"> </span>PME,<span class="w"> </span>aerdrv
+<span class="w"> </span><span class="m">42</span>:<span class="w">         </span><span class="m">45</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">  </span>BRCM<span class="w"> </span>STB<span class="w"> </span>PCIe<span class="w"> </span>MSI<span class="w"> </span><span class="m">524288</span><span class="w"> </span>Edge<span class="w">      </span>xhci_hcd
+IPI0:<span class="w">        </span><span class="m">31</span><span class="w">         </span><span class="m">14</span><span class="w">         </span><span class="m">14</span><span class="w">         </span><span class="m">14</span><span class="w">       </span>Rescheduling<span class="w"> </span>interrupts
+IPI1:<span class="w">         </span><span class="m">0</span><span class="w">        </span><span class="m">277</span><span class="w">        </span><span class="m">277</span><span class="w">        </span><span class="m">278</span><span class="w">       </span>Function<span class="w"> </span>call<span class="w"> </span>interrupts
+IPI2:<span class="w">         </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">       </span>CPU<span class="w"> </span>stop<span class="w"> </span>interrupts
+IPI3:<span class="w">         </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">       </span>CPU<span class="w"> </span>stop<span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>crash<span class="w"> </span>dump<span class="o">)</span><span class="w"> </span>interrupts
+IPI4:<span class="w">         </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">       </span>Timer<span class="w"> </span>broadcast<span class="w"> </span>interrupts
+IPI5:<span class="w">     </span><span class="m">21717</span><span class="w">          </span><span class="m">8</span><span class="w">          </span><span class="m">8</span><span class="w">          </span><span class="m">6</span><span class="w">       </span>IRQ<span class="w"> </span>work<span class="w"> </span>interrupts
+IPI6:<span class="w">         </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">       </span>CPU<span class="w"> </span>wake-up<span class="w"> </span>interrupts
+Err:<span class="w">          </span><span class="m">0</span>
 </pre></div>
 </div>
 <p>Check that soft-interrupts, except timers, are only handled by CPU0:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ubuntu@ubuntu:~$ cat /proc/softirqs
-                    CPU0       CPU1       CPU2       CPU3       
-          HI:          <span class="m">2</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>
-       TIMER:     <span class="m">343845</span>        <span class="m">105</span>        <span class="m">103</span>        <span class="m">103</span>
-      NET_TX:        <span class="m">165</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>
-      NET_RX:       <span class="m">1628</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>
-       BLOCK:       <span class="m">9192</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>
-    IRQ_POLL:          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>
-     TASKLET:       <span class="m">3728</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>
-       SCHED:          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>
-     HRTIMER:      <span class="m">60501</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>
-         RCU:          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>          <span class="m">0</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>ubuntu@ubuntu:~$<span class="w"> </span>cat<span class="w"> </span>/proc/softirqs
+<span class="w">                    </span>CPU0<span class="w">       </span>CPU1<span class="w">       </span>CPU2<span class="w">       </span>CPU3<span class="w">       </span>
+<span class="w">          </span>HI:<span class="w">          </span><span class="m">2</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span>
+<span class="w">       </span>TIMER:<span class="w">     </span><span class="m">343845</span><span class="w">        </span><span class="m">105</span><span class="w">        </span><span class="m">103</span><span class="w">        </span><span class="m">103</span>
+<span class="w">      </span>NET_TX:<span class="w">        </span><span class="m">165</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span>
+<span class="w">      </span>NET_RX:<span class="w">       </span><span class="m">1628</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span>
+<span class="w">       </span>BLOCK:<span class="w">       </span><span class="m">9192</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span>
+<span class="w">    </span>IRQ_POLL:<span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span>
+<span class="w">     </span>TASKLET:<span class="w">       </span><span class="m">3728</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span>
+<span class="w">       </span>SCHED:<span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span>
+<span class="w">     </span>HRTIMER:<span class="w">      </span><span class="m">60501</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span>
+<span class="w">         </span>RCU:<span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span><span class="w">          </span><span class="m">0</span>
 </pre></div>
 </div>
 <p>Check that all the CPU cores are operating at 1000MHz:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># reset cpufreq stat counters</span>
-ubuntu@ubuntu:~$ <span class="nb">echo</span> <span class="s1">&#39;1&#39;</span> <span class="p">|</span> sudo tee /sys/devices/system/cpu/cpu*/cpufreq/stats/reset
+ubuntu@ubuntu:~$<span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;1&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/sys/devices/system/cpu/cpu*/cpufreq/stats/reset
 <span class="m">1</span>
-ubuntu@ubuntu:~$ cpufreq-info -s -m
-<span class="m">600</span> MHz:0.00%, <span class="m">700</span> MHz:0.00%, <span class="m">800</span> MHz:0.00%, <span class="m">900</span> MHz:0.00%, <span class="m">1000</span> MHz:100.00%, <span class="m">1</span>.10 GHz:0.00%, <span class="m">1</span>.20 GHz:0.00%, <span class="m">1</span>.30 GHz:0.00%, <span class="m">1</span>.40 GHz:0.00%, <span class="m">1</span>.50 GHz:0.00%
+ubuntu@ubuntu:~$<span class="w"> </span>cpufreq-info<span class="w"> </span>-s<span class="w"> </span>-m
+<span class="m">600</span><span class="w"> </span>MHz:0.00%,<span class="w"> </span><span class="m">700</span><span class="w"> </span>MHz:0.00%,<span class="w"> </span><span class="m">800</span><span class="w"> </span>MHz:0.00%,<span class="w"> </span><span class="m">900</span><span class="w"> </span>MHz:0.00%,<span class="w"> </span><span class="m">1000</span><span class="w"> </span>MHz:100.00%,<span class="w"> </span><span class="m">1</span>.10<span class="w"> </span>GHz:0.00%,<span class="w"> </span><span class="m">1</span>.20<span class="w"> </span>GHz:0.00%,<span class="w"> </span><span class="m">1</span>.30<span class="w"> </span>GHz:0.00%,<span class="w"> </span><span class="m">1</span>.40<span class="w"> </span>GHz:0.00%,<span class="w"> </span><span class="m">1</span>.50<span class="w"> </span>GHz:0.00%
 </pre></div>
 </div>
 </section>
@@ -347,15 +350,15 @@ ubuntu@ubuntu:~$ cpufreq-info -s -m
 <h3>Benchmark<a class="headerlink" href="#benchmark" title="Permalink to this heading"></a></h3>
 <p>Finally, we can benchmark the real-time performance of the configured kernel with the platform we are using. A common benchmark is to measure the interrupt latency using a tool named <a class="reference external" href="https://wiki.linuxfoundation.org/realtime/documentation/howto/tools/cyclictest/start">cyclictest</a>.</p>
 <p>For example you run a latency test imposing CPU and I/O stress in the system and verifying that the latency test results in good performance.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$ taskset -c <span class="m">0</span> stress -c <span class="m">1</span> <span class="p">&amp;</span> 
-$ taskset -c <span class="m">1</span> stress -c <span class="m">1</span> <span class="p">&amp;</span>
-$ taskset -c <span class="m">2</span> stress -c <span class="m">1</span> <span class="p">&amp;</span>
-$ taskset -c <span class="m">3</span> stress -c <span class="m">1</span> <span class="p">&amp;</span>
-$ taskset -c <span class="m">0</span> stress -i <span class="m">1</span> <span class="p">&amp;</span>
-$ taskset -c <span class="m">1</span> stress -i <span class="m">1</span> <span class="p">&amp;</span>
-$ taskset -c <span class="m">2</span> stress -i <span class="m">1</span> <span class="p">&amp;</span>
-$ taskset -c <span class="m">3</span> stress -i <span class="m">1</span> <span class="p">&amp;</span>
-$ taskset -c <span class="m">0</span> cyclictest -p <span class="m">90</span> -m -t1 -n -D 3h -i <span class="m">200</span> -a <span class="m">1</span> -h500 -q 
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>taskset<span class="w"> </span>-c<span class="w"> </span><span class="m">0</span><span class="w"> </span>stress<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span><span class="w"> </span>
+$<span class="w"> </span>taskset<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>stress<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+$<span class="w"> </span>taskset<span class="w"> </span>-c<span class="w"> </span><span class="m">2</span><span class="w"> </span>stress<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+$<span class="w"> </span>taskset<span class="w"> </span>-c<span class="w"> </span><span class="m">3</span><span class="w"> </span>stress<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+$<span class="w"> </span>taskset<span class="w"> </span>-c<span class="w"> </span><span class="m">0</span><span class="w"> </span>stress<span class="w"> </span>-i<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+$<span class="w"> </span>taskset<span class="w"> </span>-c<span class="w"> </span><span class="m">1</span><span class="w"> </span>stress<span class="w"> </span>-i<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+$<span class="w"> </span>taskset<span class="w"> </span>-c<span class="w"> </span><span class="m">2</span><span class="w"> </span>stress<span class="w"> </span>-i<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+$<span class="w"> </span>taskset<span class="w"> </span>-c<span class="w"> </span><span class="m">3</span><span class="w"> </span>stress<span class="w"> </span>-i<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+$<span class="w"> </span>taskset<span class="w"> </span>-c<span class="w"> </span><span class="m">0</span><span class="w"> </span>cyclictest<span class="w"> </span>-p<span class="w"> </span><span class="m">90</span><span class="w"> </span>-m<span class="w"> </span>-t1<span class="w"> </span>-n<span class="w"> </span>-D<span class="w"> </span>3h<span class="w"> </span>-i<span class="w"> </span><span class="m">200</span><span class="w"> </span>-a<span class="w"> </span><span class="m">1</span><span class="w"> </span>-h500<span class="w"> </span>-q<span class="w"> </span>
 </pre></div>
 </div>
 <p>In order to generate a latency plot you can use the <a class="reference external" href="https://www.osadl.org/Create-a-latency-plot-from-cyclictest-hi.bash-script-for-latency-plot.0.html">OSADL script</a>.</p>
@@ -375,7 +378,7 @@ $ taskset -c <span class="m">0</span> cyclictest -p <span class="m">90</span> -m
   <hr/>
 
   <div role="contentinfo">
-    <p>&#169; Copyright 2022, ROS 2 Real-Time Working Group.</p>
+    <p>&#169; Copyright 2024, ROS 2 Real-Time Working Group.</p>
   </div>
 
   Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
